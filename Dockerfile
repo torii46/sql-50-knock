@@ -9,6 +9,8 @@ RUN apt-get update && \
   grep -v "CREATE PROCEDURAL LANGUAGE plpgsql" > /docker-entrypoint-initdb.d/pagila_init.sql && \
   cat /tmp/pagila-0.10.1/pagila-data.sql >> /docker-entrypoint-initdb.d/pagila_init.sql
 
+RUN mkdir /knock
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 5432

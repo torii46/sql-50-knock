@@ -25,7 +25,7 @@ cat <<EOS
 #================
 EOS
 
-while !(docker run -it --net postgre_default --net-alias psql_sd --name psql_sd postgres:9.6.5 psql -U postgres -h postgres_sd -p 5432)
+while !(docker run -v "$(pwd)/knock:/knock" -it --net postgre_default --net-alias psql_sd --name psql_sd postgres:9.6.5 psql -a -U postgres -h postgres_sd -p 5432)
 do
   echo "wait PostgreSQL server..."
   docker rm -f psql_sd || true
